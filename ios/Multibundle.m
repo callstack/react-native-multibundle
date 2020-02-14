@@ -4,7 +4,9 @@
 
 @implementation Multibundle
 
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE(Multibundle)
+
+@synthesize bridge = _bridge;
 
 RCT_EXPORT_METHOD(loadBundle:(NSString *)bundleName
     bundleId:(nonnull NSNumber *)bundleId
@@ -12,12 +14,12 @@ RCT_EXPORT_METHOD(loadBundle:(NSString *)bundleName
     resolver:(RCTPromiseResolveBlock)resolve
     rejecter:(RCTPromiseRejectBlock)reject)
 {
-    RCTBridge *bridge = [RCTBridge alloc];
+    RCTBridge *bridge = _bridge;
 
     @try
     {
-        NSURL *u = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
-        [bridge registerSegmentWithId:bundleId path:u.absoluteString];
+        NSURL *u = [[NSBundle mainBundle] URLForResource:bundleName withExtension:@"ios.bundle"];
+        [bridge registerSegmentWithId:(NSUInteger)bundleId path:u.absoluteString];
 
         resolve(nil);
         
