@@ -19,24 +19,10 @@ function makeScreenForAppBundle(bundleName) {
     screen,
     navigationOptions: {
       tabBarOnPress: ({ navigation, defaultHandler }) => {
-        // if (Multibundle.isBundleLoaded(bundleName)) {
-        //   defaultHandler();
-        // } else {
-        // const listener = ({
-        //   bundleName: currentlyLoadedBundle,
-        //   loadStartTimestamp,
-        // }) => {
-        //   if (currentlyLoadedBundle === bundleName) {
-        //     BundleRegistry.removeListener('bundleLoaded', listener);
-        // navigation.setParams({ loadStartTimestamp });
-        //     defaultHandler();
-        //   }
-        // };
+        navigation.setParams({ loadStartTimestamp: Date.now() });
         Multibundle.loadBundle(bundleName).then(() => {
-          navigation.setParams({ loadStartTimestamp: 1 });
           defaultHandler();
         });
-        // }
       }
     }
   };
