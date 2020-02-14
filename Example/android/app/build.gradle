@@ -76,8 +76,10 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js",
-    enableHermes: false,  // clean and rebuild if changing
+    bundleCommand: "multi-bundle",
+    cliPath: "node_modules/@haul-bundler/cli/bin/cli.js",
+    bundleInDebug: true,
+    extraPackagerArgs: ["--skipHostCheck", "--config=haul.config.js"]
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -180,7 +182,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':ReactAndroid')
+    implementation project(':react-native-multibundle')
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

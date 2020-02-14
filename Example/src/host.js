@@ -1,12 +1,9 @@
-import React from 'react';
-import { AppRegistry, View, Text, Linking } from 'react-native';
-import {
-  createAppContainer,
-  createBottomTabNavigator,
-  NavigationActions,
-} from 'react-navigation';
-import Multibundle from 'react-native-multibundle';
-import EmptyHost from './EmptyHost';
+import React from "react";
+import { AppRegistry, View, Text, Linking } from "react-native";
+import { createAppContainer, NavigationActions } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import Multibundle from "react-native-multibundle";
+import EmptyHost from "./EmptyHost";
 
 function makeScreenForAppBundle(bundleName) {
   const screen = props => {
@@ -40,8 +37,8 @@ function makeScreenForAppBundle(bundleName) {
           defaultHandler();
         });
         // }
-      },
-    },
+      }
+    }
   };
 }
 
@@ -49,11 +46,11 @@ const AppContainer = createAppContainer(
   createBottomTabNavigator(
     {
       Initial: EmptyHost,
-      app0: makeScreenForAppBundle('app0'),
-      app1: makeScreenForAppBundle('app1'),
+      app0: makeScreenForAppBundle("app0"),
+      app1: makeScreenForAppBundle("app1")
     },
     {
-      initialRouteName: 'Initial',
+      initialRouteName: "Initial"
     }
   )
 );
@@ -77,14 +74,14 @@ class RootComponent extends React.Component {
       this.navigatorRef.current.dispatch(
         NavigationActions.navigate({
           routeName: bundleName,
-          params: { loadStartTimestamp },
+          params: { loadStartTimestamp }
         })
       );
     }
   };
 
   async componentDidMount() {
-    Linking.addEventListener('url', this.handleURL);
+    Linking.addEventListener("url", this.handleURL);
 
     const initialUrl = await Linking.getInitialURL();
     if (initialUrl) {
@@ -93,12 +90,12 @@ class RootComponent extends React.Component {
   }
 
   componentWillUnmount() {
-    Linking.removeListener('url', this.handleURL);
+    Linking.removeListener("url", this.handleURL);
   }
 
   render() {
     return (
-      <View style={{ flex: 1, width: '100%' }}>
+      <View style={{ flex: 1, width: "100%" }}>
         <AppContainer
           ref={this.navigatorRef}
           // we handle deep linking manually

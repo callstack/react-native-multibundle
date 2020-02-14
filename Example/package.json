@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "haul": "node_modules/@haul-bundler/cli/bin/cli.js"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
@@ -17,7 +18,8 @@
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.0.0-beta.2",
-    "react-navigation": "^4.1.1"
+    "react-navigation": "^4.1.1",
+    "react-navigation-tabs": "^2.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

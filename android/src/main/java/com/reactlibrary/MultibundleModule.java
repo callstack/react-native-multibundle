@@ -1,9 +1,10 @@
 package com.reactlibrary;
 
+import com.facebook.react.bridge.CatalystInstance;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.Promise;
 
 public class MultibundleModule extends ReactContextBaseJavaModule {
 
@@ -20,8 +21,19 @@ public class MultibundleModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void sampleMethod(String stringArgument, int numberArgument, Callback callback) {
-        // TODO: Implement some actually useful functionality
-        callback.invoke("Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
+    public void loadBundle(String bundleName, int bundleId, Boolean sync, Promise promise) {
+
+        try {
+            CatalystInstance catalystInstance = this.reactContext.getCatalystInstance();
+            catalystInstance.loadScriptFromAssets(
+              this.reactContext.getAssets(),
+              "assets://" + bundleName + ".android.bundle",
+              bundleId,
+              sync);
+            promise.resolve(null);
+        } catch(Exception e) {
+            promise.reject(e);
+        }
+
     }
 }
