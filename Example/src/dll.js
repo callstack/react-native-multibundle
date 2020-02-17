@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { AppRegistry, View, Text } from "react-native";
-import Multibundle from "react-native-multibundle";
+import React, { useEffect, useState } from 'react';
+import { AppRegistry, View, Text } from 'react-native';
+import Multibundle from 'react-native-multibundle';
 
-AppRegistry.registerComponent("Example", () => () => {
+AppRegistry.registerComponent('Example', () => () => {
   const [RootComponent, setRootComponent] = useState(() => () => (
     <View>
       <Text>initial</Text>
@@ -11,9 +11,9 @@ AppRegistry.registerComponent("Example", () => () => {
 
   useEffect(() => {
     (async () => {
-      await Multibundle.loadBundle("host");
+      await Multibundle.loadBundle('host');
 
-      setRootComponent(() => Multibundle.getBundleExport("host"));
+      setRootComponent(() => Multibundle.getBundleExport('host'));
     })();
   }, []);
 

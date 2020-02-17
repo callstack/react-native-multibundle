@@ -5,6 +5,8 @@
   "description": "TODO",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint --ext .ts index.ts",
+    "typecheck": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,7 +29,13 @@
     "react-native": ">=0.59.0-rc.0 <1.0.x"
   },
   "devDependencies": {
+    "@callstack/eslint-config": "^9.1.0",
+    "@types/react-native": "^0.61.15",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "eslint": "^6.8.0",
     "react": "^16.8.3",
-    "react-native": "^0.59.10"
+    "react-native": "^0.59.10",
+    "typescript": "^3.7.5"
   }
 }

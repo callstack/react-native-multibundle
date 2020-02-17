@@ -5,9 +5,9 @@ const transform = ({ config }) => {
   config.resolve.alias = {
     ...config.resolve.alias,
     'react-native': path.join(__dirname, 'node_modules/react-native'),
-    'react-native-multibundle': path.join(__dirname, '../')
-  }
-}
+    'react-native-multibundle': path.join(__dirname, '../'),
+  };
+};
 
 export default makeConfig({
   templates: {
@@ -23,7 +23,7 @@ export default makeConfig({
       entry: withPolyfills(
         ['./src/dll.js', 'react', 'react-native', 'react-navigation'],
         {
-          additionalSetupFiles: ['src/dll.js'],
+          additionalSetupFiles: ['./src/dll.js'],
         }
       ),
       dll: true,

@@ -6,7 +6,7 @@ export default function EmptyRootComponent() {
     <View style={styles.container}>
       <Text style={styles.text}>Host is empty</Text>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -19,6 +19,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 28,
     textAlign: 'center',
-    color: '#282828'
-  }
+    color: '#282828',
+  },
 });
