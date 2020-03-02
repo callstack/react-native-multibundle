@@ -18,8 +18,8 @@ RCT_EXPORT_METHOD(loadBundle:(NSString *)bundleName
 
     @try
     {
-        NSURL *u = [[NSBundle mainBundle] URLForResource:bundleName withExtension:@"ios.bundle"];
-        [bridge registerSegmentWithId:(NSUInteger)bundleId path:u.absoluteString];
+        NSURL *url = [[NSBundle mainBundle] URLForResource:bundleName withExtension:@"ios.bundle"];
+        [bridge registerSegmentWithId:[bundleId unsignedIntegerValue] path:url.absoluteString];
 
         resolve(nil);
         

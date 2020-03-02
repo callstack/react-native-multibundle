@@ -38,13 +38,13 @@ export default makeConfig({
     },
     app0: {
       entry: './src/app0',
-      type: 'basic-bundle',
+      type: 'indexed-ram-bundle',
       dependsOn: ['index'],
       app: true,
     },
     app1: {
       entry: './src/app1',
-      type: 'basic-bundle',
+      type: 'indexed-ram-bundle',
       dependsOn: ['index'],
       app: true,
     },

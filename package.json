@@ -34,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
     "eslint": "^6.8.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "react": "^16.8.3",
     "react-native": "^0.59.10",
     "typescript": "^3.7.5"

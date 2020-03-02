@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Linking } from 'react-native';
+import { View, Linking, TouchableOpacity } from 'react-native';
 import { createAppContainer, NavigationActions } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Multibundle from 'react-native-multibundle';
 import EmptyHost from './EmptyHost';
+import { getTestProps } from './utils';
 
 function makeScreenForAppBundle(bundleName) {
   const screen = props => {
@@ -18,11 +19,21 @@ function makeScreenForAppBundle(bundleName) {
   return {
     screen,
     navigationOptions: {
+      tabBarButtonComponent: props => (
+        <TouchableOpacity
+          {...{ ...props, ...getTestProps(`tab_${bundleName}`) }}
+        />
+      ),
       tabBarOnPress: ({ navigation, defaultHandler }) => {
         navigation.setParams({ loadStartTimestamp: Date.now() });
-        Multibundle.loadBundle(bundleName).then(() => {
-          defaultHandler();
-        });
+        Multibundle.loadBundle(bundleName)
+          .then(() => {
+            defaultHandler();
+            return;
+          })
+          .catch(error => {
+            console.error(error);
+          });
       },
     },
   };
@@ -81,7 +92,12 @@ class RootComponent extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, width: '100%' }}>
+      <View
+        style={{
+          flex: 1,
+          width: '100%',
+        }}
+      >
         <AppContainer
           ref={this.navigatorRef}
           // we handle deep linking manually

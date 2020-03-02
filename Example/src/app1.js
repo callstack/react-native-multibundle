@@ -1,16 +1,23 @@
 import React, { Component, Suspense } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { getTestProps } from './utils';
 
 const Async = React.lazy(() => import('./async'));
 
 export default class App extends Component {
   render() {
-    const loadTime = Math.abs(Date.now() - this.props.navigation.state.params.loadStartTimestamp);
+    const loadTime = Math.abs(
+      Date.now() - this.props.navigation.state.params.loadStartTimestamp
+    );
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>App 1</Text>
+        <Text style={styles.welcome} {...getTestProps('app1Text')}>
+          App 1
+        </Text>
         <Text style={styles.body}>Load time: {loadTime} ms</Text>
-        <Suspense fallback={<Text>Loading</Text>}><Async /></Suspense>
+        <Suspense fallback={<Text>Loading</Text>}>
+          <Async />
+        </Suspense>
       </View>
     );
   }

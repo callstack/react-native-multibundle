@@ -6,6 +6,7 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
+import { getTestProps } from './utils';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -25,7 +26,9 @@ export default class App extends Component {
     );
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>App 0</Text>
+        <Text style={styles.welcome} {...getTestProps('app0Text')}>
+          App 0
+        </Text>
         <Text style={styles.body}>Load time: {loadTime} ms</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text>

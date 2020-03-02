@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { AppRegistry, View, Text } from 'react-native';
 import Multibundle from 'react-native-multibundle';
 
+console.disableYellowBox = true;
+
 AppRegistry.registerComponent('Example', () => () => {
   const [RootComponent, setRootComponent] = useState(() => () => (
     <View>

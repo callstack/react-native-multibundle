@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { getTestProps } from './utils';
 
 export default function EmptyRootComponent() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Host is empty</Text>
+    <View style={styles.container} {...getTestProps('emptyHostView')}>
+      <Text style={styles.text} {...getTestProps('emptyHostText')}>
+        Host is empty
+      </Text>
     </View>
   );
 }
