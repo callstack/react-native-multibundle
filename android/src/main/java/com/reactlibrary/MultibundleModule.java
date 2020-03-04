@@ -21,7 +21,7 @@ public class MultibundleModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void loadBundle(String bundleName, int bundleId, Boolean sync, Promise promise) {
+    public void loadBundle(String bundleName, int bundleId, Promise promise) {
 
         try {
             CatalystInstance catalystInstance = this.reactContext.getCatalystInstance();
@@ -29,7 +29,7 @@ public class MultibundleModule extends ReactContextBaseJavaModule {
               this.reactContext.getAssets(),
               "assets://" + bundleName + ".android.bundle",
               bundleId,
-              sync);
+              false);
             promise.resolve(null);
         } catch(Exception e) {
             promise.reject(e);

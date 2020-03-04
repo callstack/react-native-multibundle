@@ -9584,7 +9584,7 @@ react-native-tab-view@^2.11.0:
 
 react-native@callstack/react-native#feat/bundle-id-for-multibundle:
   version "1000.0.0"
-  resolved "https://codeload.github.com/callstack/react-native/tar.gz/afb66bfcbfe906a0489b56364bb4d3715ce48507"
+  resolved "https://codeload.github.com/callstack/react-native/tar.gz/c1e790a7e5be2a2eb6b483ba756d605a77aa2890"
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-native-community/cli" "^3.0.0"

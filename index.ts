@@ -27,7 +27,7 @@ class Multibundle {
     return global[bundleName].default;
   }
 
-  async loadBundle(bundleName: string, sync = true) {
+  async loadBundle(bundleName: string) {
     this.loadStartTimestamp[bundleName] = Date.now();
     const isBundleLoaded = this.isBundleLoaded(bundleName);
 
@@ -43,18 +43,14 @@ class Multibundle {
     }
 
     if (!isBundleLoaded) {
-      this.print(
-        `bundle '${bundleName}' not available - loading ${
-          sync ? 'synchronously' : 'asynchronously'
-        }`
-      );
+      this.print(`bundle '${bundleName}' not available - loading`);
       const bundleId = process.env.HAUL_BUNDLES[bundleName];
 
       if (typeof bundleId !== 'number') {
         throw new Error(`Cannot find bundle id for bundle name ${bundleName}`);
       }
 
-      await MultibundleNativeModule.loadBundle(bundleName, bundleId, sync);
+      await MultibundleNativeModule.loadBundle(bundleName, bundleId);
 
       return bundleId;
     }

@@ -10,7 +10,6 @@ RCT_EXPORT_MODULE(Multibundle)
 
 RCT_EXPORT_METHOD(loadBundle:(NSString *)bundleName
     bundleId:(nonnull NSNumber *)bundleId
-    sync:(BOOL)sync
     resolver:(RCTPromiseResolveBlock)resolve
     rejecter:(RCTPromiseRejectBlock)reject)
 {
