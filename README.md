@@ -4,7 +4,7 @@ This native modules allows you to use multiple bundles in your React Native app.
 
 This project is still __work in progress__:
 
-- [ ] https://github.com/facebook/react-native/pull/27844
+- [x] https://github.com/facebook/react-native/pull/27844
 - [ ] https://github.com/facebook/react-native/pull/27855
 - [ ] https://github.com/facebook/react-native/pull/27875
 - [ ] Refinements & cleanup
