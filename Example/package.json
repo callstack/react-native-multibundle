@@ -18,7 +18,7 @@
     "react": "16.9.0",
     "react-native": "callstack/react-native#feat/bundle-id-for-multibundle",
     "react-native-gesture-handler": "^1.5.6",
-    "react-native-reanimated": "^1.7.0",
+    "react-native-reanimated": "^2.10.0",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.0.0-beta.2",
     "react-navigation": "^4.1.1",
